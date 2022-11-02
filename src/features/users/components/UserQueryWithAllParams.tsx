@@ -1,6 +1,6 @@
 import {useGetUserByIdQuery} from '../redux/service'
 
-export const User = () => {
+export const UserQueryWithAllParams = () => {
     const query = useGetUserByIdQuery('1', {
         skip: false, // Allows a query to 'skip' running for that render.
         pollingInterval: 0, // Allows a query to automatically refetch on a provided interval in milliseconds. Defaults to 0 (off)
@@ -9,7 +9,7 @@ export const User = () => {
         // Defaults to false
         refetchOnFocus: true, // Allows forcing the query to refetch when the browser window regains focus. Defaults to false
         refetchOnReconnect: true,
-        // selectFromResult see example in Users component
+        // selectFromResult - we can take for instance only one user from list of users in response see example in Users component
     })
 
     const {data, status, error, isUninitialized, isLoading, isFetching, isSuccess, isError, refetch} = query

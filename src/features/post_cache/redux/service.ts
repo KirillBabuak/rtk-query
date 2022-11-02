@@ -7,8 +7,7 @@ const postListCacheTag: any = {type: "Post", id: 'List'};
 
 export const postsApi = createApi({
     reducerPath: 'postsApi',
-    // global configuration for the api how long save cache after unsubscription
-    keepUnusedDataFor: 30,
+    keepUnusedDataFor: 30,     // global configuration for the api how long save cache after unsubscription
     tagTypes: [postCacheTag.type], // register tag types
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://jsonplaceholder.typicode.com/posts',

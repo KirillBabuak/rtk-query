@@ -4,8 +4,7 @@ type User = Record<string, unknown> & { name: string }
 
 export const usersApi = createApi({
     reducerPath: 'usersApi',
-    // global configuration for the api how long save cache
-    keepUnusedDataFor: 30,
+    keepUnusedDataFor: 30, // global configuration for the api how long save cache (seconds)
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://jsonplaceholder.typicode.com/users',
     }),
@@ -15,15 +14,11 @@ export const usersApi = createApi({
         }),
         getUserById: builder.query<User, string>({
             query: (id) => ({url: `/${id}`}),
-            // configuration for an individual endpoint how long save cache, overriding the api setting
-            keepUnusedDataFor: 5,
-            transformResponse: (response: User) => {
-                return {...response, extraField: 'test extra field'}
-            },
+            keepUnusedDataFor: 5, // configuration for an individual endpoint how long save cache, overriding the api setting
+            transformResponse: (response: User) => ({...response, extraField: 'test extra field'}),
         }),
         updateUser: builder.mutation<User, Partial<User>>(
             {
-                // note: an optional `queryFn` may be used in place of `query`
                 query: ({id, ...body}) => ({
                     url: `/${id}`,
                     method: 'PATCH',

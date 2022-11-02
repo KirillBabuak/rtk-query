@@ -2,8 +2,7 @@ import {useUpdateUserMutation, useGetUserByIdQuery} from '../redux/service'
 
 export const UpdateUser = () => {
     const {data: defaultUser} = useGetUserByIdQuery('1');
-    const mutation = useUpdateUserMutation();
-    const [updateUser, result] = mutation;
+    const [updateUser, result] = useUpdateUserMutation();
     const {data: mutationUser, error, isUninitialized, isLoading, isSuccess, isError} = result;
 
     const handleUpdate = async () => {

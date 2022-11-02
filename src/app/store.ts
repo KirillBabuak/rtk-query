@@ -17,5 +17,4 @@ export const store = configureStore({
   ],
 })
 
-// enable listener behavior for the store
-setupListeners(store.dispatch)
+setupListeners(store.dispatch) //  optional, but required for refetchOnFocus/refetchOnReconnect behaviors
